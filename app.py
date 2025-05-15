@@ -3,15 +3,17 @@ import requests
 
 app = Flask(__name__)
 
-#data of singers 
+response = requests.get ("")
+singer_list = response.json()
+print(singer_list)
 
+#data of singers 
 singers = [
     {
         "id":1,
         "Name":"Clairo",
         "Birthday":"August 18, 1998",
         "Nationality":"American"
-
         
 
     }
