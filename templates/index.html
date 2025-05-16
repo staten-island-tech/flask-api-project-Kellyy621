@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Singers List</title>
+</head>
+<body>
+    <h1>List of Singers</h1>
+    <ul>
+        {% for singer in singers %}
+            <li>
+                <strong>{{ singer.Name }}</strong><br>
+                Birthday: {{ singer.Birthday }}<br>
+                Nationality: {{ singer.Nationality }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
