@@ -4,16 +4,27 @@
     <title>Singers List</title>
 </head>
 <body>
-    <h1>List of Singers</h1>
-    <ul>
+    <h1>Click on the album cover to learn more about the artist!</h1>
         {% for singer in singers %}
-            <li>
-                <strong>{{ singer.Name }}</strong><br>
-                Birthday: {{ singer.Birthday }}<br>
-                Nationality: {{ singer.Nationality }}
-                <img src="{{ singer.Image }}" alt="{{ singer.Name }}" width="200">
-            </li>
+        <div class= "singer">
+            <img src= "{{singer.Image}}" onclick= "toggleInfo({singer:id})" alt= "{{singer.Name}}">
+            <div class= "info" id= "info-{{singer.id}}">
+                <p><strong> Name: </strong> {{singer.Name}}</p>
+                <p><strong> Birthday: </strong> {{singer.Birthday}}</p>
+                <p><strong> Nationality: </strong> {{singer.Nationality}}</p>
+                <p><strong> Songs: </strong> {{singer.Song}} </p>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+        <script>
+            function toggleInfo(id) {
+                const infoDiv = document.getElementById('info-' + id);
+                if (infoDiv.style.display === 'none' || infoDiv.style.display === '') {
+                    infoDiv.style.display = 'block';
+                } else {
+                    infoDiv.style.display = 'none';
+                }
+            }
+        </script>
 </body>
 </html>
