@@ -30,7 +30,7 @@ singers = [
         "Name":"Billie Eilish",
         "Birthday":"December 18, 2001",
         "Nationality":"American",
-        "Songs":"Wildflower, Birds of a Feather, What Was I Made For",
+        "Songs":"Wildflower, Birds of a Feather, What Was I Made",
         "Image":"https://www.jambase.com/wp-content/uploads/2024/04/billie-eilish-new-album-hit-me-hard-and-soft-v2-1480x832.jpg"
     }
 ]
