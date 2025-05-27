@@ -13,7 +13,8 @@ def random_dog_facts():
     except Exception as x:
         print("Error getting random facts: {x}")
         return()
-    
+
+#Random dog image(s)
 def random_dog_image(breed=None):
     try:
         if breed:
@@ -23,6 +24,16 @@ def random_dog_image(breed=None):
         response = request.get(url)
         data = response.json()
         return data.get('message')
+    except Exception as x:
+        print(f"Error getting message: {x}")
+        return None
+    
+@app.route ('/')
+def home():
+    facts = random_dog_facts(d)
+    image = random_dog_image()
+    return render_template("home.html", )
+
     
 
 # New route: When a user clicks a Pokémon card, this page shows more details and a stats chart
