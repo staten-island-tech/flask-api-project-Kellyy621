@@ -4,9 +4,9 @@ import requests
 app = Flask(__name__)
 
 #Random dog facts
-def random_dog_facts():
+def random_dog_facts(number=1):
     try:
-        url = f"https://dog-api.kinduff.com/api/facts?number=[number]"
+        url = f"https://dog-api.kinduff.com/api/facts?number={number}"
         response = requests.get(url)
         data = response.json()
         return data.get('facts')
@@ -21,7 +21,7 @@ def random_dog_image(breed=None):
             url=f"https://dog.ceo/api/breed/{breed.lower()}/images/random"
         else:
             url="https://dog.ceo/api/breed/image/random"
-        response = request.get(url)
+        response = requests.get(url)
         data = response.json()
         return data.get('message')
     except Exception as x:
@@ -30,7 +30,7 @@ def random_dog_image(breed=None):
     
 @app.route ('/')
 def home():
-    facts = random_dog_facts(d)
+    facts = random_dog_facts(1)
     image = random_dog_image()
     return render_template("home.html", facts=facts, image=image)
 
@@ -43,10 +43,10 @@ def search():
     if not image:
         error = f"Breed '{breed}' not found"
         return render_template("home.html", facts=[], image = None, error = error)
-    facts = random_dog_facts(d)
+    facts = random_dog_facts(1)
     return render_template("home.html", facts = facts, image = image, breed = breed)
 
-@app.route('/facts/<int:number')
+@app.route('/facts/<int:number>')
 def multiple_facts(number):
     facts = random_dog_facts(number)
     return render_template("facts.html", facts = facts, number = number)

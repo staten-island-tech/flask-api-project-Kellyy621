@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if error %}
+        <p style = "color:red;">{{error}}</p>
+    {% endif %}
+
+    {% if breed %}
+        <h2>Breed: {{breed.title()}}</h2>
+    {% endif %}
+
+    {% if image %}
+  <img src="{{ image }}" alt="Dog image" style="max-width: 500px;">
+{% else %}
+  <p>No image available.</p>
+{% endif %}
+
+        
+    
+       
+
+    {% if facts %}
+        <h3>Did you know?</h3>
+        <ul>
+                {% for fact in facts %}
+                    <li>{{fact}}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
