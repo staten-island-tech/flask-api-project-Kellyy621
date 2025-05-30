@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <form action="{{ url_for('search') }}" method="get">
+        <input type="text" name="breed" placeholder="Enter dog breed">
+        <button type="submit">Search by Breed</button>
+    </form>
+    <a href="{{ url_for('multiple_facts', number=5) }}">Get 5 Dog Facts</a>
+    <a href="{{ url_for('generate_image') }}">Generate Image</a>
     {% if error %}
         <p style = "color:red;">{{error}}</p>
     {% endif %}
@@ -14,10 +20,6 @@
 {% else %}
   <p>No image available.</p>
 {% endif %}
-
-        
-    
-       
 
     {% if facts %}
         <h3>Did you know?</h3>
