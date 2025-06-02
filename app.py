@@ -30,9 +30,9 @@ def random_dog_image(breed=None):
     
 @app.route ('/')
 def home():
-    facts = random_dog_facts(1)
+    facts = random_dog_facts(5)
     image = random_dog_image()
-    return render_template("home.html", facts=facts, image=image)
+    return render_template("home.html", facts=facts, image=image, error=None, breed=None)
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -43,19 +43,19 @@ def search():
     if not image:
         error = f"Breed '{breed}' not found"
         return render_template("home.html", facts=[], image = None, error = error)
-    facts = random_dog_facts(1)
+    facts = random_dog_facts(5)
     return render_template("home.html", facts = facts, image = image, breed = breed)
 
 @app.route('/generate-image')
 def generate_image():
     image = random_dog_image()
-    facts = random_dog_facts(1)
+    facts = random_dog_facts(5)
     return render_template('home.html', facts=facts, image=image)
 
 @app.route('/facts/<int:number>')
-def multiple_facts(number):
-    facts = random_dog_facts(number)
-    return render_template("facts.html", facts = facts, number = number)
+def multiple_facts():
+    facts = random_dog_facts(5)
+    return render_template("facts.html", facts = facts, number = 5)
 
 if __name__ == '__main__':
     app.run(debug=True)
