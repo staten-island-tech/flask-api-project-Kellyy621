@@ -2,11 +2,8 @@
 
 {% block content %}
     <form action="{{ url_for('search') }}" method="get">
-        <input type="text" name="breed" placeholder="Enter dog breed">
-        <button type="submit">Search by Breed</button>
     </form>
-    <a href="{{ url_for('multiple_facts', number=5) }}">Get 5 dog facts</a>
-    <a href="{{ url_for('generate_image') }}">Generate Image</a>
+
     {% if error %}
         <p style = "color:red;">{{error}}</p>
     {% endif %}
@@ -16,7 +13,7 @@
     {% endif %}
 
     {% if image %}
-  <img src="{{ image }}" alt="Dog image" style="max-width: 500px;">
+  <img src="{{ image }}" alt="Dog image" style="max-width: 1000px;">
 {% else %}
   <p>No image available.</p>
 {% endif %}
@@ -28,5 +25,5 @@
                     <li>{{fact}}</li>
                 {% endfor %}
         </ul>
-    {% endif %}
+{% endif %}
 {% endblock %}
